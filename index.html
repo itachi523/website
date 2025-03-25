@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSKStore Online Tech Shopping</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; }
+        .tabs { display: flex; justify-content: center; background-color: #007bff; padding: 10px 0; }
+        .tab { padding: 10px 20px; cursor: pointer; color: white; border: none; background: transparent; }
+        .tab.active { background-color: #0056b3; }
+        .content { display: none; padding: 20px; }
+        .content.active { display: block; }
+        .category { margin: 20px 0; }
+        .product { display: inline-block; margin: 20px; padding: 10px; border: 1px solid #ddd; background-color: white; border-radius: 8px; }
+        .product img { border-radius: 8px; }
+        .cart { margin-top: 20px; padding: 10px; border: 1px solid #000; display: inline-block; background-color: #fff; border-radius: 8px; }
+        button { padding: 10px; cursor: pointer; border: none; background-color: #007bff; color: white; border-radius: 5px; }
+        button:hover { background-color: #0056b3; }
+        h1, h2 { color: #333; }
+        .home { margin: 20px; padding: 20px; background-color: #e9ecef; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <h1>BSKStore Online Tech Shopping</h1>
+
+    <div class="tabs">
+        <div class="tab active" onclick="showTab('home')">Home</div>
+        <div class="tab" onclick="showTab('products')">Products</div>
+        <div class="tab" onclick="showTab('cart')">Cart</div>
+        <div class="tab" onclick="showTab('contact')">Contact</div>
+    </div>
+
+    <div id="home" class="content active home">
+        <h2>Welcome to BSKStore!</h2>
+        <p>Your one-stop shop for the latest technology products.</p>
+        <p>Explore our wide range of laptops, smartphones, and accessories.</p>
+        <img src="images/store_banner.jpg" alt="BSKStore Banner" width="80%" style="border-radius: 8px;">
+    </div>
+
+    <div id="products" class="content">
+        <div class="category">
+            <h2>Laptops</h2>
+            <div class="product" data-name="Dell Inspiron" data-price="70000">
+                <img src="images/A_modern_Dell_Inspiron_laptop_with_a_sleek_silver_.png" alt="Dell Inspiron" width="150">
+                <h3>Dell Inspiron</h3>
+                <p>Price: 70000</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Asus Laptop" data-price="75000">
+                <img src="images/A_stylish_Asus_laptop_with_a_slim_black_design,_a_.png" alt="Asus Laptop" width="150">
+                <h3>Asus Laptop</h3>
+                <p>Price: 75000</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="HP Laptop" data-price="80000">
+                <img src="images/A_premium_HP_laptop_with_a_silver_body,_ultra-thin.png" alt="HP Laptop" width="150">
+                <h3>HP Laptop</h3>
+                <p>Price: 80000</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>Smartphones</h2>
+            <div class="product" data-name="Realme Note 12" data-price="25000">
+                <img src="images/A_sleek_Realme_Note_12_smartphone_with_a_modern_de.png" alt="Realme Note 12" width="150">
+                <h3>Realme Note 12</h3>
+                <p>Price: 25000</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="iPhone 16" data-price="120000">
+                <img src="images/A_futuristic_Apple_iPhone_16_with_a_sleek_silver_b.png" alt="iPhone 16" width="150">
+                <h3>iPhone 16</h3>
+                <p>Price: 120000</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="OnePlus Nord CE3 Lite" data-price="18000">
+                <img src="images/A_stylish_OnePlus_Nord_CE3_Lite_smartphone_with_a_.png" alt="OnePlus Nord CE3 Lite" width="150">
+                <h3>OnePlus Nord CE3 Lite</h3>
+                <p>Price: 18000</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="OnePlus 6T" data-price="35000">
+                <img src="images/A_sleek_OnePlus_6T_smartphone_with_a_curved_glass_.png" alt="OnePlus 6T" width="150">
+                <h3>OnePlus 6T</h3>
+                <p>Price: 35000</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Vivo 15 Pro" data-price="28000">
+                <img src="images/A_modern_Vivo_15_Pro_smartphone_with_a_pop-up_self.png" alt="Vivo 15 Pro" width="150">
+                <h3>Vivo 15 Pro</h3>
+                <p>Price: 28000</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Samsung S23" data-price="100000">
+                <img src="images/A_premium_Samsung_S23_smartphone_with_a_sleek_glas.png" alt="Samsung S23" width="150">
+                <h3>Samsung S23</h3>
+                <p>Price: 100000</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>Headphones</h2>
+            <div class="product" data-name="Sony Headphones" data-price="150">
+                <img src="images/A_pair_of_high-quality_Sony_headphones_with_a_slee.png" alt="Sony Headphones" width="150">
+                <h3>Sony Headphones</h3>
+                <p>Price: 150</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart" class="content">
+        <div class="cart">
+            <h2>Shopping Cart</h2>
+            <ul id="cart-list"></ul>
+            <p>Total: Ru<span id="total-price">0</span></p>
+            <button onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+
+    <div id="contact" class="content">
+        <h2>Contact Us</h2>
+        <p>Email: bskstore@example.com</p>
+        <p>Phone: +1 123-456-7890</p>
+        <p>Address: 123 Main St, City, Country</p>
+    </div>
+
+    <script>
+        let cart = [];
+
+        function showTab(tabName) {
+            document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add('active');
+        }
+
+        function addToCart(button) {
+            let product = button.parentElement;
+            let name = product.getAttribute("data-name");
+            let price = parseFloat(product.getAttribute("data-price"));
+
+            cart.push({ name, price });
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartList = document.getElementById("cart-list");
+            let totalPrice = document.getElementById("total-price");
+            cartList.innerHTML = "";
+            let total = 0;
+
+            cart.forEach(item => {
+                let li = document.createElement("li");
+                li.innerHTML = `${item.name} - Ru${item.price}`;
+                cartList.appendChild(li);
+                total += item.price;
+            });
+
+            totalPrice.textContent = total;
+        }
+        
+        function checkout() {
+            alert("Thank you for your purchase!");
+            cart = []; // Clear the cart
+            updateCart(); // Update the cart display
+        }
+    </script>
+</body>
+</html>
